@@ -6,11 +6,14 @@ import os
 ENTRY = "The electrician's kids were shocked by how grounded he was."
 
 
-def main() -> None:
-    output_dir = os.environ.get("MAKEFUN_OUTPUT_DIR", "/output")
+def write_entry(output_dir: str) -> None:
     os.makedirs(output_dir, exist_ok=True)
     with open(os.path.join(output_dir, "entry.txt"), "w", encoding="utf-8") as fh:
         fh.write(ENTRY)
+
+
+def main() -> None:
+    write_entry(os.environ.get("MAKEFUN_OUTPUT_DIR", "/output"))
 
 
 if __name__ == "__main__":
